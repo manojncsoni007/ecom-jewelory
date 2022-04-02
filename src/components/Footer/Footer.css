@@ -1,0 +1,13 @@
+.footer{
+    background-color: var(--gray);
+    padding: 2rem;
+    margin-top: 4rem;
+}
+
+.footer a{
+    text-decoration: none;
+    color: var(--black);
+}
+.red{
+    color:var(--red)
+}
