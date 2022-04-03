@@ -1,5 +1,4 @@
 import "./App.css";
-import { Banner, Footer, Navbar } from "./components";
 import { Home } from "./pages";
 
 
