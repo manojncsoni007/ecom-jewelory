@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import {Navbar,Banner, Footer} from '../../components';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Home.css';
 
@@ -29,15 +30,16 @@ const Home = () => {
                 <div className="homepage-category">
                     {
                         category && category.map(({categoryName, img}) => (
-                            <a href="">
+                            <Link to="/">
                                 <div className="category-item">
                                     <img src={img} alt="ring" />
                                     <div className="flex-center">
                                         <p className="overlay-text flex-center">{categoryName}</p>
                                     </div>
                                 </div>
-                            </a>
-                        ))
+                            </Link>
+
+))
                     }
                 </div>
             </main>
