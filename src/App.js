@@ -1,11 +1,13 @@
 import "./App.css";
-import Home from "./pages/Home/Home";
+import { Banner, Footer, Navbar } from "./components";
+import { Home } from "./pages";
+
 
 
 function App() {
   return (
     <div className="App">
-     <Home/>
+    <Home/>
     </div>
   );
 }

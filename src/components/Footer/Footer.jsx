@@ -3,6 +3,7 @@ import './Footer.css'
 import { FaHeart} from "react-icons/fa"
 
 
+
 const Footer = () => {
   return (
     <div className='footer'>
@@ -11,4 +12,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export {Footer};

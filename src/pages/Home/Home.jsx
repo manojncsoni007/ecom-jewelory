@@ -1,14 +1,11 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import Navbar from '../../components/Navbar/Navbar'
-import Banner from '../../components/Banner/Banner'
-import { useCart } from '../../context/cart-context'
+import { useState, useEffect } from 'react';
+import {Navbar,Banner, Footer} from '../../components';
+import axios from 'axios';
 import './Home.css';
-import Footer from '../../components/Footer/Footer'
+
 
 const Home = () => {
-    const { dispatch } = useCart();
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
@@ -44,10 +41,10 @@ const Home = () => {
                     }
                 </div>
             </main>
-            <Footer/>
+           <Footer/>
         </div>
 
     )
 }
 
-export default Home
+export {Home};

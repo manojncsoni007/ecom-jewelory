@@ -9,7 +9,7 @@ const Navbar = () => {
         <nav className="navbar" id="header">
             <div className="navbar-title">
                 <a href="index.html">
-                    JEWELORY
+                    GOlDLANE
                 </a>
             </div>
             <div className="search-bar">
@@ -37,4 +37,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export {Navbar};
