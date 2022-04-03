@@ -1,0 +1,12 @@
+.search-bar input {
+    width: 25rem;
+    padding: 0.5rem 0.5rem;
+}
+#header {
+    background-color: #ffffff;
+    color: black;
+}
+.navbar img{
+    width: 10rem;
+    height: 2rem;
+}
