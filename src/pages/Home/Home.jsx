@@ -1,14 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
+import {Navbar,Banner,Footer} from '../../components'
 import axios from 'axios'
-import Navbar from '../../components/Navbar/Navbar'
-import Banner from '../../components/Banner/Banner'
-import { useCart } from '../../context/cart-context'
+import {Link} from 'react-router-dom'
 import './Home.css';
-import Footer from '../../components/Footer/Footer'
+
 
 const Home = () => {
-    const { dispatch } = useCart();
+    
     const [category, setCategory] = useState([]);
 
     useEffect(() => {
@@ -32,14 +31,14 @@ const Home = () => {
                 <div className="homepage-category">
                     {
                         category && category.map(({categoryName, img}) => (
-                            <a href="">
+                            <Link to="">
                                 <div className="category-item">
                                     <img src={img} alt="ring" />
                                     <div className="flex-center">
                                         <p className="overlay-text flex-center">{categoryName}</p>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         ))
                     }
                 </div>
