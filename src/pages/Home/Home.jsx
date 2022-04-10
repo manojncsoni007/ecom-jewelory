@@ -30,23 +30,19 @@ const Home = () => {
                 <div className="homepage-category">
                     {
                         category && category.map(({categoryName, img}) => (
-                            <Link to="/">
+                            <Link to="/product">
                                 <div className="category-item">
                                     <img src={img} alt="ring" />
                                     <div className="flex-center">
                                         <p className="overlay-text flex-center">{categoryName}</p>
                                     </div>
                                 </div>
-                            </Link>
-
-))
+                            </Link>))
                     }
                 </div>
             </main>
            <Footer/>
-        </div>
-
-    )
+        </div>)
 }
 
 export {Home};
