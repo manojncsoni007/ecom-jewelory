@@ -33,7 +33,7 @@ const Product = () => {
             const {data:{products}} = await axios.get('/api/products')
             setProductItem(products)
         } catch(e){
-            console.log(e);
+            console.error(e);
         }
       }
     )()
