@@ -27,7 +27,7 @@ const Navbar = () => {
                         <span className="badge badge-sm center">{wishlist}</span>
                     </div>
                 </Link>
-                <Link to="/">
+                <Link to="/product">
                     <div className="badge-on-icon">
                         <FaShoppingCart size='1.5rem' />
                         <span className="badge badge-sm center">{cartItem}</span>
