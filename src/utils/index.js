@@ -1,3 +1,3 @@
 export {getSortedProduct} from './getSortedProduct';
 export {getRatingProduct} from './getRatingProduct';
-export {getCategoryProduct} from './getCategoryProduct';
+export {getCategoryProduct,getMetalCategoryProduct} from './getCategoryProduct';

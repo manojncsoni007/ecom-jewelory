@@ -25,7 +25,6 @@ const ProductProvider = ({ children }) => {
         } 
     })
 
-
     return (
         <ProductContext.Provider value={{ productState, productDispatch }}>
             {children}
