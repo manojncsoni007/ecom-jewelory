@@ -1,27 +1,81 @@
-
-.container{
-    padding: 2rem;
+.container {
+    padding: 2rem 2rem;
 }
 
-
 .cart-container {
-    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+}
+
+.product-list {
+    width: 60%;
+}
+
+.cart-total {
+    width: 20%;
+    justify-content: center;
     align-items: center;
-    margin: 0 auto;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.product {
+    display: flex;
+    overflow: hidden;
+    background-color: #F9FCFB;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.product img {
+    padding: 0.5rem;
+    height: 250px;
+    width: 250px;
+    object-fit: contain;
+}
+
+.product-info {
+    padding: 1rem;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-info-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-name,
+.product-price {
+    margin-bottom: 2rem;
 }
 
 .card {
-    padding: 0.5rem 0;
+    padding: 0.8rem 0.5rem;
 }
 
 .card-btn {
     width: 100%;
-    padding: 0.4rem;
+    padding: 0.7rem;
     background-color: var(--lightblue);
     color: var(--white);
     border: none;
     margin-top: 1rem;
     cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.text-xl {
+    font-size: 1.5rem;
 }
 
 .price-detail {
@@ -35,10 +89,17 @@
     margin: 0.5rem 0;
 }
 
+.price-detail-list p {
+    font-size: 1.3rem;
+}
+
 .total-amount {
-    border-bottom: 1px solid var(--gray);
     padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.total-amount p {
+    font-size: 1.3rem;
 }
 
 .horizontal-card .card-header {
@@ -48,12 +109,18 @@
 }
 
 .header-btn {
-    width: 100%;
+    width: 90%;
     padding: 0.5rem;
+    font-size: 1.2rem;
     background-color: var(--lightblue);
     color: var(--white);
     border: none;
     margin: 0.5rem 0;
-    border-radius: 2%;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.title{
+    text-align: center;
+    margin: 1.5rem;
 }

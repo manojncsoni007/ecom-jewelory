@@ -22,10 +22,10 @@ const Navbar = () => {
                     <FaUser size='1.5rem' />
                     <span className='flex'>Login</span>
                 </Link>
-                <Link to="/">
+                <Link to="/wishlist">
                     <div className="badge-on-icon">
                         <FaHeart size='1.5rem' />
-                        <span className="badge badge-sm center">0</span>
+                        <span className="badge badge-sm center">{cartState.wishlistItem.length}</span>
                     </div>
                 </Link>
                 <Link to="/cart">
