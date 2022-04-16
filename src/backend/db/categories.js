@@ -12,7 +12,7 @@ import bangles from '../../assets/images/bangles.png'
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Rings",
+    categoryName: "Ring",
     img : ring
   },
   {
