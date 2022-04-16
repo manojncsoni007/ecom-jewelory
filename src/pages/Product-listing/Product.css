@@ -27,3 +27,15 @@
     display: flex;
     justify-content: space-between;
 }
+.go-cart-btn{
+    text-align: center;
+    background-color: var(--blue);
+    padding: 0.8rem;
+    margin: 0.5rem;
+    border-radius: 7px;
+    width: 100%;
+    border: none;
+    text-decoration: none;
+    font-size: medium;
+    color: var(--white);;
+}

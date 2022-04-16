@@ -16,3 +16,22 @@
 .gold{
     color: goldenrod;
 }
+.navbar-header{
+    margin-left:2rem ;
+    font-size: 1.2rem;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.navbar-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

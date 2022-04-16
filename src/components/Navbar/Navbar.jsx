@@ -2,7 +2,7 @@ import React from 'react'
 import { FaHeart, FaUser, FaShoppingCart } from "react-icons/fa"
 import './Navbar.css';
 import { useCart } from '../../context/cart-context';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const { cartState } = useCart();
@@ -12,13 +12,22 @@ const Navbar = () => {
                 <Link to="/">
                     <span className='gold'>GOLD</span>LANE
                 </Link>
+                <div className='navbar-header'>
+                    <Link to="/">
+                        <span>Home</span>
+                    </Link>
+                    <Link to="/product">
+                        <span>Product</span>
+                    </Link>
+                </div>
             </div>
-            
+
+            {/*
             <div className="search-bar">
                 <input type="text" name="search" placeholder="🔍 Search" />
-            </div>
+            </div> */}
             <div className="navbar-menu flex-center">
-                <Link to="/">
+                <Link className='icon-name' to="/">
                     <FaUser size='1.5rem' />
                     <span className='flex'>Login</span>
                 </Link>
@@ -39,4 +48,4 @@ const Navbar = () => {
     )
 }
 
-export {Navbar};
+export { Navbar };

@@ -72,7 +72,7 @@ const Product = () => {
                   {
                     cartItem.some(item => item._id === product._id) ? (
                       <Link to='/cart' className='go-cart-btn'>
-                        <button><b>Go To Cart</b></button>
+                      <b>Go To Cart</b>
                       </Link>
                     ) : (
                       <button onClick={() => cartDispatch({ type: 'ADD_TO_CART', payload: product })}><b>Add To Cart</b></button>
