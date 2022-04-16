@@ -7,11 +7,12 @@ import axios from 'axios';
 import { useProduct, useCart } from '../../context';
 import { getCategoryProduct, getRatingProduct, getSortedProduct, getMetalCategoryProduct } from '../../utils';
 import { FaHeart } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Product = () => {
   const [productItem, setProductItem] = useState([]);
-  const { cartDispatch } = useCart();
-  const { productState, productDispatch } = useProduct();
+  const { cartState: { cartItem, wishlistItem }, cartDispatch } = useCart();
+  const { productState } = useProduct();
   const metalCategorizedProduct = getMetalCategoryProduct(
     productItem,
     productState.metal.gold,
@@ -49,7 +50,17 @@ const Product = () => {
           {
             sortedProduct.map((product) => (
               <div className="card">
-                <span className="card-icon flex-center"><FaHeart size='1.5rem'/></span>
+                {
+                  wishlistItem.some(item => item._id === product._id) ? (
+                    <span className="card-icon flex-center" onClick={() => cartDispatch({ type: 'REMOVE_FROM_WISHLIST', payload: product })}>
+                      <FaHeart size='1.5rem' color='red' />
+                    </span>
+                  ) : (
+                    <span className="card-icon flex-center" onClick={() => cartDispatch({ type: 'ADD_TO_WISHLIST', payload: product })}>
+                      <FaHeart size='1.5rem'/>
+                    </span>
+                  )
+                }
                 <div className="card-img">
                   <img id="radius" src={product.image} alt="" />
                 </div>
@@ -58,7 +69,15 @@ const Product = () => {
                   <h5>{product.price}</h5>
                 </div>
                 <div className="card-footer">
-                  <button onClick={() => cartDispatch({ type: 'ADD_TO_CART', payload: product })}><b>Add to Cart</b></button>
+                  {
+                    cartItem.some(item => item._id === product._id) ? (
+                      <Link to='/cart' className='go-cart-btn'>
+                        <button><b>Go To Cart</b></button>
+                      </Link>
+                    ) : (
+                      <button onClick={() => cartDispatch({ type: 'ADD_TO_CART', payload: product })}><b>Add To Cart</b></button>
+                    )
+                  }
                 </div>
               </div>
             ))
