@@ -20,7 +20,7 @@ const Login = () => {
             </div>
             <div className="login-remember">
                 <label for="remember-me"><input type="checkbox" id="remember-me"/>Remember Me</label>
-                <a href="" className="forgot-password">Forgot your password ?</a>
+                <p className="forgot-password">Forgot your password ?</p>
             </div>
             <button className="authentication-btn">Login</button>
             <div className="flex-center">
