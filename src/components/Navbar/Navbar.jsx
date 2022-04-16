@@ -27,7 +27,7 @@ const Navbar = () => {
                 <input type="text" name="search" placeholder="🔍 Search" />
             </div> */}
             <div className="navbar-menu flex-center">
-                <Link className='icon-name' to="/">
+                <Link className='icon-name' to="/login">
                     <FaUser size='1.5rem' />
                     <span className='flex'>Login</span>
                 </Link>
