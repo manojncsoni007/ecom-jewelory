@@ -6,28 +6,28 @@ import './Filter.css';
 
 const Filter = () => {
 
-  const { productDispatch } = useProduct();
+  const { productState, productDispatch } = useProduct();
 
   return (
     <div>
       <aside className="sidebar">
         <div className="space-between">
           <p className="text-l"><b>Filter</b></p>
-          <button className='clear-btn' onClick={()=>productDispatch({type:"CLEAR"})}>Clear</button>
+          <button className='clear-btn' onClick={() => productDispatch({ type: "CLEAR" })}>Clear</button>
         </div>
 
         <div className="filter-group">
           <p className="text-m"><b>Sort</b></p>
           <div className="filter-item">
             <label>
-              <input type="radio" name="price" id="filter-price" 
-              onChange={() => productDispatch({ type: "SORT", payload: "LOW_TO_HIGH" })} />
+              <input type="radio" name="price" id="filter-price" checked={productState.sortBy === "LOW_TO_HIGH"}
+                onChange={() => productDispatch({ type: "SORT", payload: "LOW_TO_HIGH" })} />
               Price (Low to High)</label>
           </div>
           <div className="filter-item">
             <label>
-              <input type="radio" name="price" id="filter-price" 
-              onChange={() => productDispatch({ type: "SORT", payload: "HIGH_TO_LOW" })} />
+              <input type="radio" name="price" id="filter-price" checked={productState.sortBy === "HIGH_TO_LOW"}
+                onChange={() => productDispatch({ type: "SORT", payload: "HIGH_TO_LOW" })} />
               Price (High to Low)</label>
           </div>
         </div>
@@ -35,58 +35,70 @@ const Filter = () => {
           <p className="text-m"><b>Metal</b></p>
           <div className="filter-item">
             <label>
-              <input type="checkbox" name="metal" id="filter-metal" 
-              onChange={()=>productDispatch({type:"GOLD"})}/>
+              <input type="checkbox" name="metal" id="filter-metal" checked={productState.metal.gold}
+                onChange={() => productDispatch({ type: "GOLD" })} />
               Gold</label>
           </div>
           <div className="filter-item">
             <label>
-              <input type="checkbox" name="metal" id="filter-metal" 
-              onChange={()=>productDispatch({type:"SILVER"})}/>
+              <input type="checkbox" name="metal" id="filter-metal" checked={productState.metal.silver}
+                onChange={() => productDispatch({ type: "SILVER" })} />
               Silver</label>
           </div>
           <div className="filter-item">
             <label>
-              <input type="checkbox" name="metal" id="filter-metal" onChange={()=>productDispatch({type:"PLATINUM"})}/>
+              <input type="checkbox" name="metal" id="filter-metal" checked={productState.metal.platinum} onChange={() => productDispatch({ type: "PLATINUM" })} />
               Platinum</label>
           </div>
         </div>
         <div className="filter-group">
           <p className="text-m"><b>Category</b></p>
           <div className="filter-item">
-            <input type="checkbox" name="Category" id="filter-category" onChange={()=>productDispatch({type:"ring"})}/>
-            <label>Ring</label>
+            <label>
+              <input type="checkbox" name="Category" id="filter-category" checked={productState.category.ring} onChange={() => productDispatch({ type: "ring" })} />
+              Ring</label>
           </div>
           <div className="filter-item">
-            <input type="checkbox" name="Category" id="filter-category" onChange={()=>productDispatch({type:"earring"})}/>
-            <label>Earring</label>
+            <label>
+              <input type="checkbox" name="Category" id="filter-category" checked={productState.category.earring} onChange={() => productDispatch({ type: "earring" })} />
+              Earring</label>
           </div>
           <div className="filter-item">
-            <input type="checkbox" name="Category" id="filter-category" onChange={()=>productDispatch({type:"necklace"})}/>
-            <label>Necklace</label>
+            <label>
+              <input type="checkbox" name="Category" id="filter-category" checked={productState.category.necklace} onChange={() => productDispatch({ type: "necklace" })} />
+              Necklace</label>
           </div>
           <div className="filter-item">
-            <input type="checkbox" name="Category" id="filter-category" onChange={()=>productDispatch({type:"bangles"})}/>
-            <label>Bangles</label>
+            <label>
+              <input type="checkbox" name="Category" id="filter-category" checked={productState.category.bangles} onChange={() => productDispatch({ type: "bangles" })} />
+              Bangles</label>
           </div>
         </div>
         <div className="filter-group">
           <p className="text-m"><b>Rating</b></p>
           <div className="filter-item">
-            <input type="radio" name="rating" id="filter-rating" onChange={()=>productDispatch({type:"RATING",payload:4})}/>
-            <label for="">4 Stars & above</label>
+            <label>
+              <input type="radio" name="rating" id="filter-rating" checked={Number(productState.rating) === 4}
+                onChange={() => productDispatch({ type: "RATING", payload: 4 })} />
+              4 Stars & above</label>
           </div>
           <div className="filter-item">
-            <input type="radio" name="rating" id="filter-rating" onChange={()=>productDispatch({type:"RATING",payload:3})}/>
-            <label for="">3 Stars & above</label>
+            <label>
+              <input type="radio" name="rating" id="filter-rating" checked={Number(productState.rating) === 3}
+                onChange={() => productDispatch({ type: "RATING", payload: 3 })} />
+              3 Stars & above</label>
           </div>
           <div className="filter-item">
-            <input type="radio" name="rating" id="filter-rating" onChange={()=>productDispatch({type:"RATING",payload:2})}/>
-            <label for="">2 Stars & above</label>
+            <label>
+              <input type="radio" name="rating" id="filter-rating" checked={Number(productState.rating) === 2}
+                onChange={() => productDispatch({ type: "RATING", payload: 2 })} />
+              2 Stars & above</label>
           </div>
           <div className="filter-item">
-            <input type="radio" name="rating" id="filter-rating" onChange={()=>productDispatch({type:"RATING",payload:1})}/>
-            <label for="">1 Stars & above</label>
+            <label>
+              <input type="radio" name="rating" id="filter-rating" checked={Number(productState.rating) === 1}
+                onChange={() => productDispatch({ type: "RATING", payload: 1 })} />
+              1 Stars & above</label>
           </div>
         </div>
       </aside>

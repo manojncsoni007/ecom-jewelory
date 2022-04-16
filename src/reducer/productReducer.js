@@ -12,7 +12,7 @@ const productReducer = (state,action) => {
       case "PLATINUM" : return {...state, metal : {...state["metal"],platinum: !state.metal.platinum}};
       case "CLEAR" : return {
         ...state,
-        sortBy: "",
+        sortBy: " ",
         rating: 0,
         category: {
             ring: false,
