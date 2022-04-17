@@ -8,18 +8,18 @@ const Navbar = () => {
     const { cartState } = useCart();
     return (
         <nav className="navbar" id="header">
+            <div className='navbar-header'>
+                <Link to="/">
+                    <span>HOME</span>
+                </Link>
+                <Link to="/product">
+                    <span>SHOP</span>
+                </Link>
+            </div>
             <div className="navbar-title">
                 <Link to="/">
                     <span className='gold'>GOLD</span>LANE
                 </Link>
-                <div className='navbar-header'>
-                    <Link to="/">
-                        <span>Home</span>
-                    </Link>
-                    <Link to="/product">
-                        <span>Product</span>
-                    </Link>
-                </div>
             </div>
 
             {/*

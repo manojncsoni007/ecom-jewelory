@@ -1,3 +1,6 @@
+:root {
+    --white: #ffffff;
+}
 main{
     margin: 2rem 0;
 }
@@ -13,14 +16,15 @@ main{
 }
 
 .category-item {
-    width: 15rem;
-    height: 19rem;
+    padding-bottom: 1rem;
+    width: 17rem;
+    height: 21rem;
     margin: 0 auto;
-    border-radius: 0.8rem;
-    background-color: white;
+    background-color: var(--white);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
 }
 
 .category-item image {
@@ -29,7 +33,7 @@ main{
     position: relative;
 }
 .category-item:hover{
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .overlay-text {

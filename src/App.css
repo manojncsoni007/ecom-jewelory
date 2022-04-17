@@ -1,5 +1,13 @@
+:root {
+  --bggray : #F7F7F7;;
+}
+
 .App {
   text-align: center;
+}
+
+body{
+  background-color: var(--bggray);
 }
 
 .App-logo {

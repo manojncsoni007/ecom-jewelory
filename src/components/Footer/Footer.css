@@ -1,13 +1,25 @@
+:root {
+    --light-black: #111111;
+    --white: #ffffff;
+}
 .footer{
-    background-color: var(--gray);
+    background-color: var(--light-black);
+    color: var(--white);
     padding: 2rem;
     margin-top: 4rem;
     text-align: center;
 }
+.footer h5{
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
 
 .footer a{
     text-decoration: none;
-    color: var(--black);
+    color: var(--white);
 }
 .red{
     color:var(--red)

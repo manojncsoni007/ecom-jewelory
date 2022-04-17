@@ -1,10 +1,16 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --goldenrod: #daa520;
+}
 .search-bar input {
     width: 25rem;
     padding: 0.5rem 0.5rem;
 }
 #header {
-    background-color: #ffffff;
-    color: black;
+    background-color: var(--white);
+    color: var(--black) ;
+    justify-content: space-between;
 }
 .navbar img{
     width: 10rem;
@@ -14,11 +20,10 @@
     margin: 0 10px;
 }
 .gold{
-    color: goldenrod;
+    color: var(--goldenrod) ;
 }
 .navbar-header{
-    margin-left:2rem ;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     float: right;
     display: flex;
     justify-content: center;
@@ -29,6 +34,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 3rem;
+    letter-spacing: 5px;
 }
 .icon-name{
     display: flex;
