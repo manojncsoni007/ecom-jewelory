@@ -32,7 +32,7 @@ const Navbar = () => {
                 {
                     isLoggedIn ? (<Link className='icon-name' to="/profile">
                         <FaUser size='1.5rem' />
-                        <span className='flex'>{`${user?.firstName} ${user?.lastName}`}</span>
+                        <span className='flex'>{`Hi, ${user?.firstName}`}</span>
                     </Link>) : (<Link className='icon-name' to="/login">
                         <FaUser size='1.5rem' />
                         <span className='flex'>Login</span>
