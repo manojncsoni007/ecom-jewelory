@@ -2,6 +2,7 @@ import React from 'react';
 import './Cart.css';
 import { Navbar } from '../../components'
 import { useCart } from '../../context';
+import { showToast } from '../../utils/toast';
 
 const Cart = () => {
     const { cartState: { cartItem, cartItemPrice }, cartDispatch } = useCart();
@@ -23,7 +24,10 @@ const Cart = () => {
                                                 <h4 className='product-name'>{product.name}</h4>
                                                 <p className='text-xl'>{product.price}</p>
                                             </div>
-                                            <button className='header-btn' onClick={() => cartDispatch({ type: 'REMOVE_FROM_CART', payload: product })}>Remove From Cart</button>
+                                            <button className='header-btn' onClick={() => {
+                                                cartDispatch({ type: 'REMOVE_FROM_CART', payload: product })
+                                                showToast("success","Item removed from cart")
+                                            } }>Remove From Cart</button>
                                         </div>
                                     </div>
                                 ))

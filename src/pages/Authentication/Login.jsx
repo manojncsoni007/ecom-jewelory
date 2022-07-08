@@ -1,35 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Authentication.css'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Navbar } from '../../components'
+import { useAuth } from '../../context'
 
 const Login = () => {
-  return (
-      <>
-      <Navbar/>
-        <main className="auth-container">
-        <form action="">
-            <h4 className="text-center">Login</h4>
-            <div className="input-container">
-                <label for="email" className="label">Email Address *</label>
-                <input type="text" id="email" className="input" placeholder="Enter email address"/>
+    const { loginUser } = useAuth();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+        loginUser(email, password)
+
+    }
+
+    const dummyHandler = (e) => {
+        e.preventDefault();
+        setEmail('guest@gmail.com');
+        setPassword('guest123');
+        loginUser('guest@gmail.com', 'guest123');
+    }
+
+    return (
+        <>
+            <Navbar />
+            <div className="main-section">
+                <main className="auth-container">
+                    <form onSubmit={(e) => loginHandler(e)}>
+                        <h4 className="form-title">Login</h4>
+                        <div className="auth-input-container">
+                            <label htmlFor="email">Email Address *</label>
+                            <input type="text" id="email" value={email} className="input" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email address" required />
+                        </div>
+                        <div className="auth-input-container">
+                            <label htmlFor="password">Password *</label>
+                            <input type="password" value={password} id="password" className="input" onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" required />
+                        </div>
+                        <button className="guest-btn" onClick={(e) => dummyHandler(e)}>Use Guest Credentials</button>
+                        <button className="auth-btn">Login</button>
+                        <div className="flex-center">
+                            <Link to="/signup"> Create New Account <i className="fa fa-chevron-right"></i></Link>
+                        </div>
+                    </form>
+                </main>
             </div>
-            <div className="input-container">
-                <label for="password" className="label">Password *</label>
-                <input type="password" id="password" className="input" placeholder="Enter password"/>
-            </div>
-            <div className="login-remember">
-                <label for="remember-me"><input type="checkbox" id="remember-me"/>Remember Me</label>
-                <p className="forgot-password">Forgot your password ?</p>
-            </div>
-            <button className="authentication-btn">Login</button>
-            <div className="flex-center">
-                <Link to="/signup"> Create New Account <i className="fa fa-chevron-right"></i></Link>
-            </div>
-        </form>
-    </main>
-      </>
-  )
+        </>
+    )
 }
 
-export {Login}
+export { Login }
