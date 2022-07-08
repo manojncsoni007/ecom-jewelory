@@ -1,12 +1,16 @@
+
 .auth-container {
     margin-top: 4rem;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 form {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 2rem 2rem;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    width: 28rem;
+    padding: 2rem 3rem;
     background-color: var(--white);
 }
 
@@ -15,12 +19,22 @@ form a {
     color: var(--black);
 }
 
-.forgot-password {
+.guest-btn {
+    display: block;
+    width: 100%;
+    margin: 1.5rem 0 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid var(--lightblue);
+    color: var(--lightblue);
+    background-color: inherit;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
     font-size: 0.9rem;
-    float: right;
 }
 
-.authentication-btn {
+.auth-btn {
     display: block;
     width: 100%;
     margin: 1rem 0;
@@ -28,17 +42,25 @@ form a {
     background-color: var(--lightblue);
     color: var(--white);
     border: none;
+    border-radius: 0.2rem;
     cursor: pointer;
     font-weight: bold;
     font-size: 1rem;
 }
 
-.input-container {
+.auth-input-container {
     margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.auth-input-container input{
+    padding: 0.5rem;
+    width: 100%;
 }
 
 .user-auth {
-    margin: 1.5rem;
     font-size: small;
 }
 
@@ -46,4 +68,13 @@ form a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.form-title{
+    text-align: center;
+}
+.terms-condition{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
 }

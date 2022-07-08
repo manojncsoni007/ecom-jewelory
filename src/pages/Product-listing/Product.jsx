@@ -1,18 +1,23 @@
 import React from 'react'
-import './Product.css';
+import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { Filter, Navbar } from '../../components'
-// import{Link} from 'react-router-dom';
-import axios from 'axios';
-import { useProduct, useCart } from '../../context';
+import { useProduct, useCart, useAuth } from '../../context';
 import { getCategoryProduct, getRatingProduct, getSortedProduct, getMetalCategoryProduct } from '../../utils';
 import { FaHeart } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { showToast } from '../../utils/toast';
+import './Product.css';
 
 const Product = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [productItem, setProductItem] = useState([]);
+  const { isLoggedIn } = useAuth();
   const { cartState: { cartItem, wishlistItem }, cartDispatch } = useCart();
   const { productState } = useProduct();
+
+
   const metalCategorizedProduct = getMetalCategoryProduct(
     productItem,
     productState.metal.gold,
@@ -49,15 +54,28 @@ const Product = () => {
         <div className="product-listing-main">
           {
             sortedProduct.map((product) => (
-              <div className="card">
+              <div className="card" key={product._id}>
                 {
                   wishlistItem.some(item => item._id === product._id) ? (
-                    <span className="card-icon flex-center" onClick={() => cartDispatch({ type: 'REMOVE_FROM_WISHLIST', payload: product })}>
+                    <span className="card-icon flex-center" onClick={() => {
+                      cartDispatch({ type: 'REMOVE_FROM_WISHLIST', payload: product })
+                      showToast("success", "Product removed from wishlist");
+                    }}>
                       <FaHeart size='1.5rem' color='red' />
                     </span>
                   ) : (
-                    <span className="card-icon flex-center" onClick={() => cartDispatch({ type: 'ADD_TO_WISHLIST', payload: product })}>
-                      <FaHeart size='1.5rem'/>
+                    <span className="card-icon flex-center" onClick={() => {
+                      isLoggedIn ? (
+                        cartDispatch({ type: 'ADD_TO_WISHLIST', payload: product })
+                      ) : (
+                        navigate("/login", { state: { from: location }, replace: true })
+                      )
+                      if (isLoggedIn) {
+                        showToast("success", "Product added to wishlist")
+                      }
+
+                    }}>
+                      <FaHeart size='1.5rem' />
                     </span>
                   )
                 }
@@ -72,10 +90,17 @@ const Product = () => {
                   {
                     cartItem.some(item => item._id === product._id) ? (
                       <Link to='/cart' className='go-cart-btn'>
-                      <b>Go To Cart</b>
+                        <b>Go To Cart</b>
                       </Link>
                     ) : (
-                      <button onClick={() => cartDispatch({ type: 'ADD_TO_CART', payload: product })}><b>Add To Cart</b></button>
+                      <button onClick={() => {
+                        isLoggedIn ? cartDispatch({ type: 'ADD_TO_CART', payload: product }) : (
+                          navigate("/login", { state: { from: location }, replace: true })
+                        )
+                        if(isLoggedIn){
+                          showToast("success","Item added to cart")
+                        }
+                      }}><b>Add To Cart</b></button>
                     )
                   }
                 </div>

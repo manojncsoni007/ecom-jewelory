@@ -3,6 +3,7 @@ import { Navbar } from '../../components'
 import { useCart } from '../../context'
 import { Link } from 'react-router-dom'
 import './Wishlist.css';
+import { showToast } from '../../utils/toast';
 
 const Wishlist = () => {
   const { cartState: { cartItem, wishlistItem }, cartDispatch } = useCart();
@@ -27,10 +28,16 @@ const Wishlist = () => {
                     <b>Go To Cart</b>
                   </Link>
                 ) : (
-                  <button onClick={() => cartDispatch({ type: 'ADD_TO_CART', payload: product })}><b>Add To Cart</b></button>
+                  <button onClick={() => {
+                    cartDispatch({ type: 'ADD_TO_CART', payload: product })
+                    showToast("success","Item added to cart")
+                  }}><b>Add To Cart</b></button>
                 )
               }
-              <button onClick={() => cartDispatch({ type: 'REMOVE_FROM_WISHLIST', payload: product })}><b>Remove From Wishlist</b></button>
+              <button onClick={() => {
+                cartDispatch({ type: 'REMOVE_FROM_WISHLIST', payload: product })
+                showToast("success","Item removed from wishlist")
+              }}><b>Remove From Wishlist</b></button>
             </div>
           </div>
         ))}
