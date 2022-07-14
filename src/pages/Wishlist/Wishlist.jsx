@@ -1,12 +1,13 @@
 import React from 'react'
 import { Navbar } from '../../components'
-import { useCart } from '../../context'
+import { useAuth, useCart } from '../../context'
 import { Link } from 'react-router-dom'
 import './Wishlist.css';
-import { showToast } from '../../utils/toast';
+import { addToCart, addToWishlist, removeFromWishlist } from '../../services';
 
 const Wishlist = () => {
   const { cartState: { cartItem, wishlistItem }, cartDispatch } = useCart();
+  const { token } = useAuth();
   return (
     <>
       <Navbar />
@@ -29,14 +30,12 @@ const Wishlist = () => {
                   </Link>
                 ) : (
                   <button onClick={() => {
-                    cartDispatch({ type: 'ADD_TO_CART', payload: product })
-                    showToast("success","Item added to cart")
+                    addToCart(product, token, cartDispatch)
                   }}><b>Add To Cart</b></button>
                 )
               }
               <button onClick={() => {
-                cartDispatch({ type: 'REMOVE_FROM_WISHLIST', payload: product })
-                showToast("success","Item removed from wishlist")
+                removeFromWishlist(product, token, cartDispatch)
               }}><b>Remove From Wishlist</b></button>
             </div>
           </div>

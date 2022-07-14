@@ -42,7 +42,7 @@
 
 .product-info {
     padding: 1rem;
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -108,19 +108,65 @@
     justify-content: space-between;
 }
 
-.header-btn {
-    width: 90%;
-    padding: 0.5rem;
-    font-size: 1.2rem;
-    background-color: var(--lightblue);
-    color: var(--white);
-    border: none;
-    margin: 0.5rem 0;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .title{
     text-align: center;
     margin: 1.5rem;
+}
+.quantity-update {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem
+}
+.quantity-update button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.2rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background-color: var(--lightblue);
+    color: var(--white);
+    border: none;
+}
+.product-qty{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0.1rem 1rem;
+}
+.cart-footer{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: flex-start;
+}
+.cart-footer .footer-btn {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.footer-btn button{
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: -0.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.footer-btn button:hover{
+    transform: scale(1.01);
+}
+
+.wishlist-btn {
+    background-color: var(--lightblue);
+    color: var(--white);
+    border: none;
+}
+.remove-btn {
+    background-color: var(--white);
+    color: var(--lightblue) ;
+    border: 1.5px solid var(--lightblue);
 }

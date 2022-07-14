@@ -8,12 +8,13 @@ import { FaHeart } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { showToast } from '../../utils/toast';
 import './Product.css';
+import { addToCart, addToWishlist, removeFromWishlist } from '../../services';
 
 const Product = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [productItem, setProductItem] = useState([]);
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, token } = useAuth();
   const { cartState: { cartItem, wishlistItem }, cartDispatch } = useCart();
   const { productState } = useProduct();
 
@@ -58,22 +59,15 @@ const Product = () => {
                 {
                   wishlistItem.some(item => item._id === product._id) ? (
                     <span className="card-icon flex-center" onClick={() => {
-                      cartDispatch({ type: 'REMOVE_FROM_WISHLIST', payload: product })
-                      showToast("success", "Product removed from wishlist");
+                      removeFromWishlist(product,token,cartDispatch)
                     }}>
                       <FaHeart size='1.5rem' color='red' />
                     </span>
                   ) : (
                     <span className="card-icon flex-center" onClick={() => {
-                      isLoggedIn ? (
-                        cartDispatch({ type: 'ADD_TO_WISHLIST', payload: product })
-                      ) : (
+                      isLoggedIn ? ( addToWishlist(product, token, cartDispatch)) : (
                         navigate("/login", { state: { from: location }, replace: true })
                       )
-                      if (isLoggedIn) {
-                        showToast("success", "Product added to wishlist")
-                      }
-
                     }}>
                       <FaHeart size='1.5rem' />
                     </span>
@@ -94,12 +88,8 @@ const Product = () => {
                       </Link>
                     ) : (
                       <button onClick={() => {
-                        isLoggedIn ? cartDispatch({ type: 'ADD_TO_CART', payload: product }) : (
-                          navigate("/login", { state: { from: location }, replace: true })
-                        )
-                        if(isLoggedIn){
-                          showToast("success","Item added to cart")
-                        }
+                        isLoggedIn ? addToCart(product, token, cartDispatch) : (
+                          navigate("/login", { state: { from: location }, replace: true }))
                       }}><b>Add To Cart</b></button>
                     )
                   }
