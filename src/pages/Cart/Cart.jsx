@@ -1,11 +1,20 @@
 import React from 'react';
 import './Cart.css';
 import { Navbar } from '../../components'
-import { useCart } from '../../context';
-import { showToast } from '../../utils/toast';
+import { useAuth, useCart } from '../../context';
+import { addToWishlist, removeFromCart, updateCartQuantity } from '../../services';
+import { getTotalCartPrice } from '../../utils';
 
 const Cart = () => {
-    const { cartState: { cartItem, cartItemPrice }, cartDispatch } = useCart();
+    const { cartState: { cartItem }, cartDispatch } = useCart();
+    const { token } = useAuth();
+
+    const totalAmount = getTotalCartPrice(cartItem);
+
+    const quanityUpdateHandler = (product, updateType) => {
+        updateCartQuantity(product, updateType, token, cartDispatch)
+    }
+
 
     return (
         <>
@@ -24,12 +33,29 @@ const Cart = () => {
                                                 <h4 className='product-name'>{product.name}</h4>
                                                 <p className='text-xl'>{product.price}</p>
                                             </div>
-                                            <div>
-                                                <button>Add</button>
-                                                <button className='header-btn' onClick={() => {
-                                                    cartDispatch({ type: 'REMOVE_FROM_CART', payload: product })
-                                                    showToast("success", "Item removed from cart")
-                                                }}>Remove From Cart</button>
+                                            <div className='cart-footer'>
+                                                <div className="quantity-update">
+                                                    <p>Quantity : </p>
+                                                    <button
+                                                        onClick={() => {
+                                                            product.qty > 1 && quanityUpdateHandler(product, "decrement")
+                                                        }
+                                                        }>-</button>
+                                                    <span className='product-qty'>{product.qty}</span>
+                                                    <button
+                                                        onClick={() => quanityUpdateHandler(product, "increment")}>+</button>
+                                                </div>
+                                                <div className="footer-btn">
+                                                    <button className='wishlist-btn' onClick={() => {
+                                                       addToWishlist(product,token,cartDispatch)
+                                                       removeFromCart(product, token, cartDispatch)
+                                                        
+                                                    }}>Move to wishlist</button>
+                                                    <button className='remove-btn' onClick={() => {
+                                                        removeFromCart(product, token, cartDispatch)
+                                                    }}>Remove From Cart</button>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -47,7 +73,7 @@ const Cart = () => {
                                     <div className="price-detail">
                                         <div className="price-detail-list space-between">
                                             <p className="text-m">Price ({cartItem.length}Item)</p>
-                                            <p className="text-m">{cartItemPrice}</p>
+                                            <p className="text-m">{totalAmount}</p>
                                         </div>
                                         <div className="price-detail-list space-between">
                                             <p>Delivery Charges</p>
@@ -56,7 +82,7 @@ const Cart = () => {
                                     </div>
                                     <div className="total-amount space-between">
                                         <p><b>Total Amount</b></p>
-                                        <p><b>{cartItemPrice + 299}</b></p>
+                                        <p><b>{totalAmount + 299}</b></p>
                                     </div>
                                     <button className="card-btn">Place Order</button>
                                 </div>

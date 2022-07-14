@@ -1,23 +1,18 @@
 const cartReducer = (state, action) => {
     switch (action.type) {
-        case 'ADD_TO_CART': return {
+        case 'UPDATE_CART': return {
             ...state,
-            cartItem: [{ ...action.payload }, ...state.cartItem],
-            cartItemPrice: state.cartItemPrice + action.payload.price
+            cartItem: [...action.payload] 
         }
-        case 'REMOVE_FROM_CART': return {
+        case 'UPDATE_WISHLIST': return {
             ...state,
-            cartItem: state.cartItem.filter((item)=> item._id !== action.payload._id),
-            cartItemPrice: state.cartItemPrice - action.payload.price
+            wishlistItem: [...action.payload]
         }
-        case 'ADD_TO_WISHLIST' : return {
-            ...state,
-            wishlistItem: [{...action.payload}, ...state.wishlistItem]
-        }
-        case 'REMOVE_FROM_WISHLIST' : return {
-            ...state,
-            wishlistItem: state.wishlistItem.filter((item)=> item._id !== action.payload._id)
-        }
+        case 'UPDATE_QUANTITY':
+            return {
+                ...state,
+                cartItem: [...action.payload]
+            }
         default: return state;
     }
 }
