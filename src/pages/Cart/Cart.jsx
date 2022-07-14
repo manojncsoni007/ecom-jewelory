@@ -24,10 +24,13 @@ const Cart = () => {
                                                 <h4 className='product-name'>{product.name}</h4>
                                                 <p className='text-xl'>{product.price}</p>
                                             </div>
-                                            <button className='header-btn' onClick={() => {
-                                                cartDispatch({ type: 'REMOVE_FROM_CART', payload: product })
-                                                showToast("success","Item removed from cart")
-                                            } }>Remove From Cart</button>
+                                            <div>
+                                                <button>Add</button>
+                                                <button className='header-btn' onClick={() => {
+                                                    cartDispatch({ type: 'REMOVE_FROM_CART', payload: product })
+                                                    showToast("success", "Item removed from cart")
+                                                }}>Remove From Cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                 ))
