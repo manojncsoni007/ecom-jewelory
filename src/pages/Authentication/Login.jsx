@@ -18,9 +18,9 @@ const Login = () => {
 
     const dummyHandler = (e) => {
         e.preventDefault();
-        setEmail('guest@gmail.com');
-        setPassword('guest123');
-        loginUser('guest@gmail.com', 'guest123');
+        setEmail('manojsoni@gmail.com');
+        setPassword('manoj123');
+        loginUser('manojsoni@gmail.com', 'manoj123');
     }
 
     return (

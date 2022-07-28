@@ -1,0 +1,87 @@
+.title{
+    text-align: center;
+    margin: 1.5rem;
+}
+.address-container{
+    background-color: var(--white);
+    padding: 0.5rem 0.6rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 0.5rem;
+}
+.address-container h4{
+    font-size: 1.2rem;
+    margin-top: -0.3rem;
+    text-align: center;
+}
+.address-container p{
+    font-weight: 600;
+}
+.checkout-container{
+    width: 30rem;
+    margin: 0.2rem auto;
+}
+.user-address{
+    margin: 2px 0 0 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.address-title{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.user-address input{
+    margin-top: 8px;
+}
+.order-detail-container{
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: var(--white);
+}
+.order-detail-container h4{
+    font-size: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--black);
+}
+.order-detail {
+    margin: 0.7rem 0;
+    padding: 0 0.2rem;
+}
+.order-detail p{
+    margin: 0.2rem;
+}
+.order-detail_Header{
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    margin-top: -0.3rem;
+    justify-content: space-between;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+}
+.price-detail{
+    border: none
+}
+.price-detail p{
+    margin-top: 0.2rem;
+}
+.price-detail .price-main{
+    font-weight: 700;
+}
+.order-btn{
+    margin-top: 0.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.8rem;
+    background-color: var(--lightblue);
+    color: var(--white);
+    cursor: pointer;
+}

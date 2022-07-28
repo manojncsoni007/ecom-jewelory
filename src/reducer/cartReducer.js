@@ -2,7 +2,7 @@ const cartReducer = (state, action) => {
     switch (action.type) {
         case 'UPDATE_CART': return {
             ...state,
-            cartItem: [...action.payload] 
+            cartItem: [...action.payload]
         }
         case 'UPDATE_WISHLIST': return {
             ...state,

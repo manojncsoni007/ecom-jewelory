@@ -6,9 +6,9 @@ import { useProduct, useCart, useAuth } from '../../context';
 import { getCategoryProduct, getRatingProduct, getSortedProduct, getMetalCategoryProduct } from '../../utils';
 import { FaHeart } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { showToast } from '../../utils/toast';
 import './Product.css';
 import { addToCart, addToWishlist, removeFromWishlist } from '../../services';
+import { FaCartPlus } from "react-icons/fa";
 
 const Product = () => {
   const location = useLocation();
@@ -45,6 +45,7 @@ const Product = () => {
       }
     )()
   }, [])
+  
   return (
     <div>
       <Navbar />
@@ -78,7 +79,8 @@ const Product = () => {
                 </div>
                 <div className="card-header">
                   <h4>{product.name}</h4>
-                  <h5>{product.price}</h5>
+                  <h5>Price: {product.price}</h5>
+                  <h5>Rating: {product.rating}</h5>
                 </div>
                 <div className="card-footer">
                   {
@@ -90,7 +92,7 @@ const Product = () => {
                       <button onClick={() => {
                         isLoggedIn ? addToCart(product, token, cartDispatch) : (
                           navigate("/login", { state: { from: location }, replace: true }))
-                      }}><b>Add To Cart</b></button>
+                      }}> <FaCartPlus  /> <b>Add To Cart</b></button>
                     )
                   }
                 </div>

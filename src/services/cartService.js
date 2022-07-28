@@ -44,3 +44,17 @@ export const updateCartQuantity = async (product, updateType, token, cartDispatc
         console.log("error", error)
     }
 }
+
+export const clearCart = async (cart, token, cartDispatch) => {
+    try {
+        for (const item of cart){
+            await axios.delete(`/api/user/cart/${item._id}`,
+                { headers: { authorization: token } }
+            );
+        }
+        cartDispatch({type: "UPDATE_CART", payload: []})
+
+    } catch (error) {
+      showToast('error',error);
+    }
+}

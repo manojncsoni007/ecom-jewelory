@@ -4,6 +4,7 @@ import { Navbar } from '../../components'
 import { useAuth, useCart } from '../../context';
 import { addToWishlist, removeFromCart, updateCartQuantity } from '../../services';
 import { getTotalCartPrice } from '../../utils';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const { cartState: { cartItem }, cartDispatch } = useCart();
@@ -47,9 +48,9 @@ const Cart = () => {
                                                 </div>
                                                 <div className="footer-btn">
                                                     <button className='wishlist-btn' onClick={() => {
-                                                       addToWishlist(product,token,cartDispatch)
-                                                       removeFromCart(product, token, cartDispatch)
-                                                        
+                                                        addToWishlist(product, token, cartDispatch)
+                                                        removeFromCart(product, token, cartDispatch)
+
                                                     }}>Move to wishlist</button>
                                                     <button className='remove-btn' onClick={() => {
                                                         removeFromCart(product, token, cartDispatch)
@@ -84,7 +85,8 @@ const Cart = () => {
                                         <p><b>Total Amount</b></p>
                                         <p><b>{totalAmount + 299}</b></p>
                                     </div>
-                                    <button className="card-btn">Place Order</button>
+                                    <button className="card-btn">
+                                        <Link to='/checkout'>Checkout</Link></button>
                                 </div>
                             </div>
                         }

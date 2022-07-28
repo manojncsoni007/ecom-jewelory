@@ -37,5 +37,8 @@
     border: none;
     text-decoration: none;
     font-size: medium;
-    color: var(--white);;
+    color: var(--white);
+}
+.card-footer button{
+    cursor: pointer;
 }

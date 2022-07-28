@@ -1,7 +1,8 @@
 export {
     addToCart,
     removeFromCart,
-    updateCartQuantity
+    updateCartQuantity,
+    clearCart
 } from './cartService'
 export {
     addToWishlist,
