@@ -12,9 +12,27 @@ const Cart = () => {
 
     const totalAmount = getTotalCartPrice(cartItem);
 
-    const quanityUpdateHandler = (product, updateType) => {
-        updateCartQuantity(product, updateType, token, cartDispatch)
+    // const quanityUpdateHandler = (product, updateType) => {
+    //     updateCartQuantity(product, updateType, token, cartDispatch)
+    // }
+
+    const throttling = (fc, limit) => {
+        let flag = true;
+        let context = this;
+        return function (...args) {
+            if (flag) {
+                fc.apply(context,args);
+                flag = false;
+                setTimeout(() => {
+                    flag = true;
+                }, limit)
+            }
+        }
     }
+
+    const processThrottling = throttling((prdct, uType) => {
+        updateCartQuantity(prdct, uType, token, cartDispatch)
+    }, 5000)
 
 
     return (
@@ -38,13 +56,14 @@ const Cart = () => {
                                                 <div className="quantity-update">
                                                     <p>Quantity : </p>
                                                     <button
+                                                        disabled={product.qty === 1}
                                                         onClick={() => {
-                                                            product.qty > 1 && quanityUpdateHandler(product, "decrement")
+                                                            product.qty > 1 && processThrottling(product, "decrement");
                                                         }
                                                         }>-</button>
                                                     <span className='product-qty'>{product.qty}</span>
                                                     <button
-                                                        onClick={() => quanityUpdateHandler(product, "increment")}>+</button>
+                                                        onClick={() => processThrottling(product, "increment")}>+</button>
                                                 </div>
                                                 <div className="footer-btn">
                                                     <button className='wishlist-btn' onClick={() => {
